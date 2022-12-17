@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SvgPainter"
         mc:Ignorable="d"
+		WindowStartupLocation="CenterScreen"
 		d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}}"
         Title="svg real-time painter"
 		Height="1100" Width="1800">
 	<Window.Resources>
 		<GeometryConverter x:Key="GeometryConverter" />
 	</Window.Resources>
-    <Grid>
+	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition Width="1100"/>
@@ -31,17 +32,41 @@
 						 Padding="10"
 						 FontSize="18"/>
 			</DockPanel>
-			<Border Grid.Row="1"
-					BorderBrush="LightGray"
-					BorderThickness="1"
-					Width="80"
-					Height="80">
-				<Path Width="64"
-					  Height="64"
-					  Stretch="Uniform"
-					  Fill="#333" 
-					  Data="{Binding SvgData}"/>
-			</Border>
+			<StackPanel Grid.Row="1"
+						Orientation="Horizontal"
+						HorizontalAlignment="Center">
+				<Border BorderBrush="LightGray"
+						BorderThickness="1"
+						Width="80"
+						Height="80">
+					<Path Width="64"
+						  Height="64"
+						  Stretch="Fill"
+						  Fill="#333" 
+						  Data="{Binding SvgData}"/>
+				</Border>
+				<Border BorderBrush="LightGray"
+						BorderThickness="1"
+						Width="80"
+						Height="80"
+						Margin="10 0">
+					<Path Width="64"
+						  Height="64"
+						  Stretch="Uniform"
+						  Fill="#333" 
+						  Data="{Binding SvgData}"/>
+				</Border>
+				<Border BorderBrush="LightGray"
+						BorderThickness="1"
+						Width="80"
+						Height="80">
+					<Path Width="64"
+						  Height="64"
+						  Stretch="UniformToFill"
+						  Fill="#333" 
+						  Data="{Binding SvgData}"/>
+				</Border>
+			</StackPanel>
 		</Grid>
 		<Border Grid.Column="1"
 				Grid.Row="1"
@@ -68,9 +93,9 @@
 				<Line X1="0" Y1="224" X2="896" Y2="224" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
 				<Line X1="0" Y1="448" X2="896" Y2="448" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
 				<Line X1="0" Y1="672" X2="896" Y2="672" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
-				<Line X1="224" Y1="0" X2="224" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/> 
-				<Line X1="448" Y1="0" X2="448" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/> 
-				<Line X1="672" Y1="0" X2="672" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/> 				
+				<Line X1="224" Y1="0" X2="224" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
+				<Line X1="448" Y1="0" X2="448" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
+				<Line X1="672" Y1="0" X2="672" Y2="896" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=BorderBrush}"/>
 			</Grid>
 		</Border>
 	</Grid>
